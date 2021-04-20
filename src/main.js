@@ -22,7 +22,6 @@ $(document).ready(function () {
     function (response) {
       const body = JSON.parse(response);
       const conversionRates = Object.entries(body.conversion_rates);
-      console.log("ive triggered!");
       for (let i = 0; i < conversionRates.length; i++) {
         $("#currencyOne").append(
           $("<option>", {
@@ -37,19 +36,11 @@ $(document).ready(function () {
           })
         );
       }
-
-      //build option selector --
-
-      // $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
-      // $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp} degrees.`);
-      // $('.showErrors').text("");
     },
     function (error) {
       $(".showErrors").text(
         `There was an error processing your request: ${error}`
       );
-      $(".showHumidity").text("");
-      $(".showTemp").text("");
     }
   );
 
@@ -58,15 +49,20 @@ $(document).ready(function () {
     let originRate = $("#currencyOne option:selected").val();
     let targetRate = $("#currencyTwo option:selected").val();
     // let curOneText = $("#currencyOne option:selected").text();
-    // let curTwoText = $("#currencyTwo option:selected").text();
+    let curTwoText = $("#currencyTwo option:selected").text();
 
-    let curToDollar = parseInt($("#convertedAmount").val()) / originRate;
-    let convertedAmount = curToDollar * targetRate;
+    let curInUSD = parseInt($("#convertedAmount").val()) / originRate;
+    let convertedAmount = curInUSD * targetRate;
 
     //value and convert to dollar curOrgin to dollar
     //convert dollar to target dollar to curTarget
 
-    $("#output").text(`The converted amount is ${convertedAmount}`);
+    $("#output").text(
+      `The converted amount is ${convertedAmount.toLocaleString("en-US", {
+        style: "currency",
+        currency: `${curTwoText}`,
+      })}`
+    );
 
     event.preventDefault();
   });
