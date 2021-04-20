@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currency converter</title>
-</head>
-<body>
-  <div id="mySelect"></div>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency converter</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="converterSubmit">
+        <h1>Bank of Jonathan</h1>
+        <label for="currencyOne">Currency from</label>
+        <select id="currencyOne">
+          Currency from
+        </select>
+        <label for="currencyTwo">Currency to</label>
+        <select id="currencyTwo">
+          Currency to
+        </select>
+        <input type="number" id="convertedAmount" />
+        <button type="submit" class="btn btn-dark">Get that cheddar</button>
+      </form>
+      <div id="output"></div>
+    </div>
+  </body>
 </html>
